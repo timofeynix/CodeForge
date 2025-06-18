@@ -1,23 +1,37 @@
-# ----- OS Meta Files -----
-.DS_Store
-.Spotlight-V100
-.Trashes
+# ----- Core Fix -----
+**/xcuserdata/
+**/*.xcbkptlist
+**/*.xcscm*
+**/xcshareddata/
+**/xcschemes/
 
 # ----- Xcode -----
 build/
 DerivedData/
 *.xcworkspace
 *.xcuserstate
-*.xcuserdata
+*.xccheckout
+*.xcsettings
+*.xcdebuglog
 
-# ----- Python -----
-__pycache__/
-*.pyc
+# ----- Swift -----
+.swiftpm/
+.build/
+Packages/
+*.resolved
 
-# ----- General -----
+# ----- System -----
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+.nfs*
+*.swp
+*.swo
+
+# ----- Other -----
 *.log
 *.tmp
-*.swp
-EOF
-
-
+*.app
+*.ipa
+*.dSYM
