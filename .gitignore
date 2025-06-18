@@ -1,0 +1,23 @@
+# ----- OS Meta Files -----
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# ----- Xcode -----
+build/
+DerivedData/
+*.xcworkspace
+*.xcuserstate
+*.xcuserdata
+
+# ----- Python -----
+__pycache__/
+*.pyc
+
+# ----- General -----
+*.log
+*.tmp
+*.swp
+EOF
+
+
