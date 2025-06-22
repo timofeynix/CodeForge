@@ -11,13 +11,12 @@ print("Enter a city name or zip code:")
 let location = readLine() ?? "Dublin"
 
 // Build API URL with minimal text format
-// TODO: Experiment with other formats
-let url = URL(string: "https://wttr.in/\(location)?format=3")!
+let url = URL(string: "https://wttr.in/\(location)?format=%l:+%c+%t+%f+%w+%h")!
 
 let data = try! Data(contentsOf: url)
 
 // Convert to string and display.
 let weatherTxt = String(data: data, encoding: .utf8)!
 
-print("Current weather: \(weatherTxt)")
+print("Current weather in \(weatherTxt)")
 
