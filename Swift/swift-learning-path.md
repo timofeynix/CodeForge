@@ -21,3 +21,21 @@
 - [x] `Double` (*double-precision floating-point number*) = `1.0`, `-4.513` (decimals). 
     - **Type safety**: Cannot mix `Int`/`Double` without conversion: `let c = a + Int(b)` or `let c = Double(a) + b`
     - Default to `Double` (avoid `Float` unless optimizing memory)
+
+# ✅ Hacking with SwiftUI: Day 2
+- [x] `Boolean` (`true` / `false`) 
+    - `!` operator means "not"
+        ```swift
+        var isItPossible = true
+        isItPossible = !isItPossible // true became false
+        print(isItPossible) // false
+        ```
+    - `.toggle()` switch `Boolean` state
+        ```swift
+        var amIRight = true
+        amIRight.toggle() // true became false
+        print(amIRight) // false
+        ```
+- [x] String interpolation let's us place data into strings efficiently
+    - `let luggageCode = "\(1)\(2)\(3)\(4)\(5)"` = `12345`
+- [x] Checkpoint 1: Temperature conversion (Celsius to Fahrenheit)
