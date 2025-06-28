@@ -39,3 +39,53 @@
 - [x] String interpolation let's us place data into strings efficiently
     - `let luggageCode = "\(1)\(2)\(3)\(4)\(5)"` = `12345`
 - [x] Checkpoint 1: Temperature conversion (Celsius to Fahrenheit)
+
+# ✅ Hacking with SwiftUI: Day 3
+- [x] Arrays
+    - **Ordered collections** with indexing starting from 0 (0, 1, 2, ...)
+    - Type-safe: All elements must be same type
+    - `Array<Int>()` — specialized array, `<>` means "must hold"
+    - `[String]` — faster way, instead of `Array<Int>()`
+    - Key operations:
+        - `append()` to add items
+        - `count` for size
+        - `remove(at:)`/`removeAll()`
+        - `contains()` for membership checks
+        - `sorted()` for ordering (alphabet/numerical)
+    - Initialization:
+        - Literal: `[value1, value2]`
+        - Empty: `Array<Type>()` or `[Type]()`
+- [x] Dictionaries
+    // TODO: repeat
+    - **Key-value pairs** for unordered data
+    - Avoids index errors (safer than arrays for labeled data)
+    - Default values for missing keys: `dict[key, default:]`
+    - Keys must be unique (reassignment overwrites)
+    - Initialization:
+        - Literal: `[key: value, ...]`
+        - Empty: `[KeyType: ValueType]()`
+- [x] Sets
+    - **Unordered unique values**
+    - Optimized for fast membership checks (`contains()`)
+    - No duplicates
+    - Initialization:
+        - Literal: `Set([...])`
+        - Empty: `Set<Type>()`
+        - `insert()` to add items
+        ```
+        var actors = Set<String>()
+        actors.insert("Nicolas Cage")
+        ```
+- [x] Enums (enumeration)
+    - **Type-safe named options**
+    - Prevents invalid states
+    - Dot-syntax shorthand after initialization
+    ```
+    enum Weekday {
+    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
+    }
+    var day = Weekday.monday
+    day = .tuesday
+    ```
+    - Memory-optimized storage
+
