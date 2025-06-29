@@ -89,3 +89,16 @@
     ```
     - Memory-optimized storage
 
+# ✅ Hacking with SwiftUI: Day 4
+>Good data structures and bad code works a lot better than the other way around. (Eric Raymond)
+- [x] Type Annotations
+    - Override Swift's type inference with explicit types
+    - Syntax: `let name: Type = value`
+    - Use when:
+        1. Type cannot be inferred
+        2. Need specific type (e.g., `Double` over `Int`)
+        3. Delayed value assignment (`var name: String`)
+    - It's ok to use type inference instead, because:
+        - It makes code shorter and easier to read.
+        - It allows to change the type of something just by changing its initial value.
+
