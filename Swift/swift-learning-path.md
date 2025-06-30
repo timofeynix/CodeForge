@@ -72,7 +72,7 @@
         - Literal: `Set([...])`
         - Empty: `Set<Type>()`
         - `insert()` to add items
-        ```
+        ```swift
         var actors = Set<String>()
         actors.insert("Nicolas Cage")
         ```
@@ -80,7 +80,7 @@
     - **Type-safe named options**
     - Prevents invalid states
     - Dot-syntax shorthand after initialization
-    ```
+    ```swift
     enum Weekday {
     case monday, tuesday, wednesday, thursday, friday, saturday, sunday
     }
@@ -106,25 +106,25 @@
 - [x] Conditions (`if` statements)
     ```swift
     if condition {
-    // Code to execute if true
-}
+        // Code to execute if true
+    }
     ```
     - Empty check
-    ```
+    ```swift
     var username = "" 
-    // if username.count == 0 { ... } (inefficient)
+    //  if username.count == 0 { ... } (inefficient)
     if username.isEmpty {
         username = "Anonymous"
-}
+    }
     ```
     - [x] Efficient Conditional Branching
         - Chain mutually exclusive conditions using `else`/`else if`
     - Optimize with logical operators (`&&`, `||`)
     - **Implicit Bool**: Omit `== true` (use `hasConsent` instead of `hasConsent == true`)
     - Operator precedence: Always use parentheses when mixing `&&` and `||`:
-        ```
-        if (isOwner == true && isEditingEnabled) || isAdmin {
-        print("You can delete this post")
-    }
+        ```swift
+        if (isOwner && isEditingEnabled) || isAdmin {
+            print("You can delete this post")
+        }
         ```
 - ...
