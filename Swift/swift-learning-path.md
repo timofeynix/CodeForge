@@ -102,3 +102,29 @@
         - It makes code shorter and easier to read.
         - It allows to change the type of something just by changing its initial value.
 
+# ⏳ Hacking with SwiftUI: Day 5
+- [x] Conditions (`if` statements)
+    ```swift
+    if condition {
+    // Code to execute if true
+}
+    ```
+    - Empty check
+    ```
+    var username = "" 
+    // if username.count == 0 { ... } (inefficient)
+    if username.isEmpty {
+        username = "Anonymous"
+}
+    ```
+    - [x] Efficient Conditional Branching
+        - Chain mutually exclusive conditions using `else`/`else if`
+    - Optimize with logical operators (`&&`, `||`)
+    - **Implicit Bool**: Omit `== true` (use `hasConsent` instead of `hasConsent == true`)
+    - Operator precedence: Always use parentheses when mixing `&&` and `||`:
+        ```
+        if (isOwner == true && isEditingEnabled) || isAdmin {
+        print("You can delete this post")
+    }
+        ```
+- ...
