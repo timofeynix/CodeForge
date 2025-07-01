@@ -128,7 +128,7 @@
         }
         ```
 - [x] `switch` statements
-    Use when comparing **one value against multiple possibilities** (cleaner than long `if`/`else` chains):
+    - Use when comparing **one value against multiple possibilities** (cleaner than long `if`/`else` chains):
         ```swift
         let grade = "B"
 
@@ -145,11 +145,11 @@
     - No fallthrough — only one case executes
     - Combine cases — `case "rain", "snow":`
 - [x] Ternary Conditional Operator
-    Compact single-line `if`/`else` alternative. Syntax: `condition ? trueValue : falseValue`
-    ```swift
-    let animal = "Elephant"
-    let size = animal == "Elephant" ? "Large" : "Compact" // "Large"
-    ```
+    - Compact single-line `if`/`else` alternative. Syntax: `condition ? trueValue : falseValue`
+        ```swift
+        let animal = "Elephant"
+        let size = animal == "Elephant" ? "Large" : "Compact" // "Large"
+        ```
     - Keep on single line condition checks
     - Use only when clearer than `if`/`else`
     - Good for SwiftUI view modifiers
