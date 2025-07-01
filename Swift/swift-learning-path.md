@@ -102,7 +102,7 @@
         - It makes code shorter and easier to read.
         - It allows to change the type of something just by changing its initial value.
 
-# ⏳ Hacking with SwiftUI: Day 5
+# ✅ Hacking with SwiftUI: Day 5
 - [x] Conditions (`if` statements)
     ```swift
     if condition {
@@ -127,4 +127,29 @@
             print("You can delete this post")
         }
         ```
-- ...
+- [x] `switch` statements
+    Use when comparing **one value against multiple possibilities** (cleaner than long `if`/`else` chains):
+        ```swift
+        let grade = "B"
+
+        switch grade {
+            case "A": print("Great!")
+            case "B": print("Good")  // This runs
+            case "C": print("Okay")
+            default: print("Try again")  // Mandatory catch-all; required unless all cases covered
+        }
+        ```
+    - Exhaustive checks — must handle all cases (safe)
+    - Pattern matching — works with ranges, enums, tuples
+    - Clean syntax
+    - No fallthrough — only one case executes
+    - Combine cases — `case "rain", "snow":`
+- [x] Ternary Conditional Operator
+    Compact single-line `if`/`else` alternative. Syntax: `condition ? trueValue : falseValue`
+    ```swift
+    let animal = "Elephant"
+    let size = animal == "Elephant" ? "Large" : "Compact" // "Large"
+    ```
+    - Keep on single line condition checks
+    - Use only when clearer than `if`/`else`
+    - Good for SwiftUI view modifiers
