@@ -153,3 +153,97 @@
     - Keep on single line condition checks
     - Use only when clearer than `if`/`else`
     - Good for SwiftUI view modifiers
+
+# ✅ Hacking with SwiftUI: Day 6
+- [x] loops
+    - `for` loops: Execute code for fixed sequences
+        ```swift
+        for i in 1...3 {
+            print("Number \(i)")  // Prints 1, 2, 3
+        }
+        ```
+    - `_` in Loops: Ignore unused loop variables
+        ```swift
+        for _ in 1...3 {
+            print("Jump")
+        }
+        ```
+        - Use when only repetition matters, not index → Improves readability/performance
+    - `while` loops
+        - Repeat while condition is 'true'
+            ```swift
+            var countdown = 3
+            while countdown > 0 {
+                print("\(countdown)...")
+                countdown -= 1
+            }
+            print("Go!")
+            ```
+        - Best for:
+            - User input validation
+            - Game loops
+            - Sensor data polling
+        - ⚠️ Must modify condition variable inside loop to prevent infinite loops (e.g. use `countdown -= 1` instead of `countdown = 1`)
+    - Loop Control
+        - `break`: Exit loop immediately (use to find target value)
+            ```swift
+            for i in 1...10 {
+                if i == 4 {
+                    break // Stops at 3
+                }  
+                print(i)  // 1, 2, 3
+            }
+            ```
+        - `continue`: Skip current iteration (use to skip invalid cases)
+            ```swift
+            for i in 1...5 {
+                if i == 3 {
+                    continue
+                }  // Skips 3
+                print(i)  // 1, 2, 4, 5
+            }
+            ```
+    - Labeled Statements (control nested loops precisely)
+        ```swift
+        outerLoop: for i in 1...3 {
+            for j in 1...3 {
+                if j == 2 {
+                    continue outerLoop
+                }
+                print("\(i)-\(j)") // Output: 1-1, 2-1, 3-1
+            }
+        }
+        ```
+- [x] Checkpoint 3: FizzBuzz
+    - Initial Approach:
+        ```swift
+        for i in 1...100 {
+            if i % 3 == 0 && i % 5 == 0 { 
+                print("FizzBuzz")
+            } else if i % 3 == 0 {
+                print("Fizz")
+            } else if i % 5 == 0 {
+                print("Buzz")
+            } else {
+                print(i)
+            }
+        }
+        ```
+    - Improved approach (after hints):
+        ```swift
+        for i in 1...100 {
+            if i.isMultiple(of: 15) {
+                print("FizzBuzz")
+            } else if i.isMultiple(of: 3) {
+                print("Fizz")
+            } else if i.isMultiple(of: 5) {
+                print("Buzz")
+            } else {
+                print(i)
+            }
+        }
+        ```
+    - `isMultiple(of:)` > modulo :
+        - Clearer reading: `i.isMultiple(of: 15)` vs `i % 15 == 0`
+        - Official Swift recommendation
+    - Great milestone! Most developers struggle with this
