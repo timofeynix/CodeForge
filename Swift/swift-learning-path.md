@@ -101,6 +101,7 @@
     - It's ok to use type inference instead, because:
         - It makes code shorter and easier to read.
         - It allows to change the type of something just by changing its initial value.
+- [x] Checkpoint 2
 
 # ✅ Hacking with SwiftUI: Day 5
 - [x] Conditions (`if` statements)
