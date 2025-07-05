@@ -248,3 +248,64 @@
         - Clearer reading: `i.isMultiple(of: 15)` vs `i % 15 == 0`
         - Official Swift recommendation
     - Great milestone! Most developers struggle with this
+# ✅ Hacking with SwiftUI: Day 7
+- [x] Functions basics
+    - **Declaration**:
+        ```swift
+        func greet(name: String) {
+            print("Hello, \(name)!")
+        }
+        greet(name: "Fred")
+        ```
+    - **When to create functions**:
+        - Duplicate code (3+ repetitions)
+        - Complex logic chunks
+        - Clear abstraction boundaries
+    - **Parameter count**:
+        - Ideal: 0-3 parameters
+        - Max: 6 parameters (use structs beyond this)
+- [x] Returning values
+    - **Single return**:
+        ```swift
+        func square(number: Int) -> Int {
+            return number * number
+        }
+        ```
+    - **Implicit return** (only for single expressions!):
+        ```swift
+        func square(number: Int) -> Int {
+            number * number
+        }
+        ```
+- [x] Multiple return values
+    - **Using tuples**:
+        ```swift
+        func getUser() -> (name: String, age: Int) {
+            (name: "Jane", age: 19)
+        }
+        let user = getUser()
+        print(user.name)    // Jane
+        print(user.age)     // 19
+        ```
+    - **Collection choices**:        
+        | Use Case             | Type  | Example                 |
+        | -------------------- | ----- | ----------------------- |
+        | Ordered duplicates   | Array | `[1,1,2]`               |
+        | Unique unordered     | Set   | `Set([1,2,3])`          |
+        | Fixed related values | Tuple | `(name: "Li", age: 40)` |
+- [x] Parameter labels
+    - **External customization**:
+        ```swift
+        func sayHello(to name: String) {  // External 'to', internal 'name'
+            print("Hello, \(name)!")
+        }
+        sayHello(to: "Leo")
+        ```
+    - **Omitting labels**:
+        ```swift
+        func greet(_ name: String) {  // No external label
+            print("Hi, \(name)!")
+        }
+        greet("Tim")
+        ```
+        - Use when: Parameter name is clear at call site
