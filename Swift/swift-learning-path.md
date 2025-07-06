@@ -309,3 +309,7 @@
         greet("Tim")
         ```
         - Use when: Parameter name is clear at call site
+# CS193p: Developing iOS Applications (Stanford)
+- [ ] **Lecture 1: Introduction to SwiftUI**  
+  *Started: 2025-06-02 - Content coming soon*
+
