@@ -309,3 +309,6 @@
         greet("Tim")
         ```
         - Use when: Parameter name is clear at call site
+# Stanford CS193p: Lecture 1
+*Started: 2025-06-02 - Content in progress*
+**Functional programming**: Focus on functionality and behavior, not data
