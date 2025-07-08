@@ -310,5 +310,25 @@
         ```
         - Use when: Parameter name is clear at call site
 # Stanford CS193p: Lecture 1
-*Started: 2025-06-02 - Content in progress*
-**Functional programming**: Focus on functionality and behavior, not data
+- **Functional programming**: Focus on functionality and behavior, not data
+- **Code Hygiene**: Max 20 lines/view (aim for 12) → Extract subviews
+- Begin every view with minimal placeholder:
+    ```swift
+    struct MyView: View {
+        var body: some View {
+            Text("Hello")
+        }
+    }
+    ```
+- **View Composition**
+  - `HStack` for horizontal layouts
+  - `ZStack` for layered views
+  - `CardView` as reusable component
+- **Modifier Chaining**
+  ```swift
+  .foregroundColor(.green)
+  .padding()
+  ```
+
+
+
