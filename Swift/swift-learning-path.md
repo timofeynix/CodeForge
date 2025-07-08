@@ -309,7 +309,7 @@
         greet("Tim")
         ```
         - Use when: Parameter name is clear at call site
-# Stanford CS193p: Lecture 1
+# ✅ Stanford CS193p: Lecture 1
 - **Functional programming**: Focus on functionality and behavior, not data
 - **Code Hygiene**: Max 20 lines/view (aim for 12) → Extract subviews
 - Begin every view with minimal placeholder:
@@ -330,5 +330,45 @@
   .padding()
   ```
 
+# ⏳ Stanford CS193p: Lecture 2
+> In this code you will never type tuple view. That's something that the ViewBuilder mechanism does behind the scenes for you.
 
+## Key Concepts
+- **State Management**: `@State` for view-specific mutable data (`cardCount`, `isFaceUp`)
+- **View Composition**: Break complex views into components (`CardView`, `cardCountAdjusters`)
+- **Dynamic Layouts**: `LazyVGrid` with adaptive columns for responsive grids
+- **Reactive UI**: Auto-updates on state change
+
+
+
+## Implementation Patterns
+- View extraction: Create reusable components with parameters
+    ```swift
+    struct CardView: View {
+        let content: String
+        @State var isFaceUp = true
+    }
+    ```
+- **Computed Views**: Organize UI sectors:
+    ```swift
+    var cards: some View { ... }
+    var cardCountAdjusters: some View { ... }
+    ```
+- **Parameterized View Builders**: Create flexible UI components:
+    ```swift
+    func cardCountAdjuster(by offset: Int, symbol: String) -> some View
+    ```
+- **Conditional Styling**: Use ternary operators for state-dependent styling:
+    ```swift
+    .opacity(isFaceUp ? 1 : 0)
+    .disabled(cardCount + offset < 1)
+    ```
+- **Efficient Iteration**: `ForEach` with index-based content:
+    ```swift
+    ForEach(0..<cardCount, id: \.self) { index in
+        CardView(content: emojis[index])
+    }
+    ```
+
+## ⏳ TODO: Complete Lecture 2 tasks
 
