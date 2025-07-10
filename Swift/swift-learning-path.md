@@ -382,3 +382,7 @@
 - [x] 11: Change the code so that cards appear face down by default rather than face up.
 - [x] 12: Your UI should work in portrait or landscape on any iPhone and look good in light mode and dark mode.
 - [x] EXTRA 1: Associate a Color with each theme.
+
+# ⏳ Stanford CS193p: Lecture 3 (MVVM)
+
+
