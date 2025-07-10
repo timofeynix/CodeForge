@@ -330,7 +330,7 @@
   .padding()
   ```
 
-# ⏳ Stanford CS193p: Lecture 2
+# ✅ Stanford CS193p: Lecture 2
 > In this code you will never type tuple view. That's something that the ViewBuilder mechanism does behind the scenes for you.
 
 ## Key Concepts
@@ -338,8 +338,6 @@
 - **View Composition**: Break complex views into components (`CardView`, `cardCountAdjusters`)
 - **Dynamic Layouts**: `LazyVGrid` with adaptive columns for responsive grids
 - **Reactive UI**: Auto-updates on state change
-
-
 
 ## Implementation Patterns
 - View extraction: Create reusable components with parameters
@@ -370,5 +368,17 @@
     }
     ```
 
-## ⏳ TODO: Complete Lecture 2 tasks
-
+## Lecture 2 tasks
+- [x] 1: Type in all the code from lectures to get the Memorize game working.
+- [x] 2 (optional): rm `-` and `+` buttons. Skipped.
+- [x] 3: Add a title “Memorize!” to the top of the screen.
+- [x] 4: Add 3+ buttons to change emojis theme. // the hardest among others.
+- [x] 5: The face up or face down state of the cards does not need to change when the user changes the theme.
+- [x] 6: The number of pairs of cards in each of your 3 themes should be different, but in no case fewer than 4 pairs.
+- [x] 7: the cards should be shuffled each time a theme button is chosen.
+- [x] 8: The theme-choosing buttons must include an image representing the theme and text describing the theme stacked on top of each other vertically.  
+- [x] 9: The image portion of each of these theme-choosing buttons must be created using an SF Symbol which evokes the idea of the theme it chooses.
+- [x] 10: The text description of the theme-choosing buttons must use a noticeably smaller font than the font we chose for the emoji on the cards.
+- [x] 11: Change the code so that cards appear face down by default rather than face up.
+- [x] 12: Your UI should work in portrait or landscape on any iPhone and look good in light mode and dark mode.
+- [x] EXTRA 1: Associate a Color with each theme.
