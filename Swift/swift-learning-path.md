@@ -383,6 +383,54 @@
 - [x] 12: Your UI should work in portrait or landscape on any iPhone and look good in light mode and dark mode.
 - [x] EXTRA 1: Associate a Color with each theme.
 
-# ⏳ Stanford CS193p: Lecture 3 (MVVM)
+# ✅ Stanford CS193p: Lecture 3 (MVVM)
+- MVVM design paradigm
+    - Model
+        - Swift rebuilds the UI when a Model change affect it
+        - UI Independent
+        - Data + Logic
+        - "The Truth"
+    - UI
+        - Reflects the Model
+        - Stateless
+        - Declared
+        - Reactive
+    - Model and UI
+        1. @State in a View (very minimal / no separation)
+        2. The Model might only be accessible via a gatekeeper "View Model" class (full separation) | ALWAYS USE 2. 
+        3. View Model class — a hybrid of the first two (partial separation) | as your app grows, it makes a mess.
+    - MVVM
+        - Binds View to Model
+        - Interpreter: binds View to Model
+        - Gatekeeper
+        - Processes Intents
+        - No inheritance
+- Swift Type System
+    - **struct** (99.9%)
+        - Value type
+        - Functional programming
+        - Inheritance (single)
+    - class (for ViewModel)
+        - Reference type
+        - OOP
+    - protocol (part one)
+        - Is a type
+        - "stripped down" struct/class
+        - Has functions and vars, but no implementation (no storage)
+        - used for
+            - specifying the behavior of a struct, class, or enum: `struct ContentView: View`
+            - "constrains and gains"
+            - turning "don't cares" to "somewhat cares": `struct Array<Element> where Element: Equatable` 
+    - **"don't care" type (aka generics)**
+        - Swift uses them extensively
+    - functions
+        - are types: you can declare a var:
+            - `(Int, Int) -> Bool`
+            - `(Double) -> Void`
+            - ...
+        - closures
+            - "inline functions"
+- [x] Apply MVVM to Memorize (partially)
+
 
 
