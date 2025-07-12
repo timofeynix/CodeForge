@@ -432,5 +432,5 @@
             - "inline functions"
 - [x] Apply MVVM to Memorize (partially)
 
-
+# Stanford CS193p: Lecture 4 (Applying MVVM)
 
