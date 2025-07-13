@@ -330,6 +330,9 @@
   .padding()
   ```
 
+## Reading Assignment I: Intro to Swift
+
+
 # ✅ Stanford CS193p: Lecture 2
 > In this code you will never type tuple view. That's something that the ViewBuilder mechanism does behind the scenes for you.
 
@@ -368,7 +371,7 @@
     }
     ```
 
-## Lecture 2 tasks
+## Programming Assignment 1
 - [x] 1: Type in all the code from lectures to get the Memorize game working.
 - [x] 2 (optional): rm `-` and `+` buttons. Skipped.
 - [x] 3: Add a title “Memorize!” to the top of the screen.
@@ -433,4 +436,16 @@
 - [x] Apply MVVM to Memorize (partially)
 
 # Stanford CS193p: Lecture 4 (Applying MVVM)
+- `$0` — A special placeholder name for "the first argument" in Swift closures.
+- In Swift, property initialization is **undermined**; it doesn't follow the order declared in the source code.
+- Return types must always be **explicit**—they're the only thing Swift cannot infer. 
+- `@ObservedObject = something` — A major no-no (avoid direct assignment).
+
+## Reading Assignment II: Functional Programming
+- [ ] protocols
+- [ ] extensions
+- [ ] generics
+- [ ] closures
+- [ ] optionals
+
 
