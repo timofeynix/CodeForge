@@ -1,3 +1,6 @@
+
+// TODO: rewrite to topic-based style instead of chonological
+
 # ✅ Hacking with SwiftUI: Day 1
 - Why Swift?
     - 💰 "A lot of money" (high demand);
@@ -330,7 +333,11 @@
   .padding()
   ```
 
-## Reading Assignment I: Intro to Swift
+## ⏳ Reading Assignment I: Intro to Swift
+- [ ]
+
+
+
 
 
 # ✅ Stanford CS193p: Lecture 2
