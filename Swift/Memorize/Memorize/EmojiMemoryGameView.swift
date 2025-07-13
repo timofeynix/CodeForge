@@ -43,11 +43,12 @@ struct ContentView: View {
     let themeNames = ["Halloween", "Fruits", "Vehicles"]
 
     var cards: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 67))]) {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 85), spacing: 0)], spacing: 0) {
             ForEach(0..<cardCount, id: \.self) { index in
                 if index < shuffledTheme.count {
                     CardView(content: shuffledTheme[index])
                         .aspectRatio(2/3, contentMode: .fit)
+                        .padding(4)
                 }
             }
         }
@@ -116,7 +117,10 @@ struct CardView: View {
             Group {
                 base.fill(.white)
                 base.strokeBorder(lineWidth: 2)
-                Text(content).font(.largeTitle)
+                Text(content)
+                    .font(.system(size: 200))
+                    .minimumScaleFactor(0.01)
+                    .aspectRatio(1, contentMode: .fit)
             }
             .opacity(isFaceUp ? 1 : 0)
             base.fill().opacity(isFaceUp ? 0 : 1)
