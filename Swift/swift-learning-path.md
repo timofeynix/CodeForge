@@ -1,32 +1,48 @@
 
 // TODO: rewrite to topic-based style instead of chonological
 
-# ✅ Hacking with SwiftUI: Day 1
-- Why Swift?
-    - 💰 "A lot of money" (high demand);
-    - **Safety**: hard to write unsafe code;
-    - **Clarity**: easy to write clear and understandable code.
 > *"Programming is an art: don't spend all your time sharpening your pencil when you should be drawing."*
 
-- [x] `var`/`let`
-    - `var` = create a new variable
-    - `let` = constants
-    - Use `let` as much as possible — Swift best practice:
-        - Safety. Prevents accidental reassignment.
-        - Performance. The compiler can optimize let for better performance.
+- [100 Days of SwiftUI](https://www.hackingwithswift.com/100/swiftui)
+- [CS193p 2023 Stanford Course](https://cs193p.stanford.edu/2023) 
 
-- [x] `String`
-    - Multiline: `""" text """`
+# Fundamentals
 
-- [x] `Int` (*integer = whole*) = `1`, `-123`
-    - `_` ignored by Swift (improves readability): `1_000_000` -> `1000000`
+## Why Swift
 
-- [x] `Double` (*double-precision floating-point number*) = `1.0`, `-4.513` (decimals). 
-    - **Type safety**: Cannot mix `Int`/`Double` without conversion: `let c = a + Int(b)` or `let c = Double(a) + b`
-    - Default to `Double` (avoid `Float` unless optimizing memory)
+- High demand
+- **Safety**: hard to write unsafe code;
+- **Clarity**: easy to write clear and understandable code.
 
-# ✅ Hacking with SwiftUI: Day 2
-- [x] `Boolean` (`true` / `false`) 
+## Basic Syntax
+
+- `var`/`let`
+    - `var` creates a new variables
+    - `let` declares constants
+    - Prefer `let` for safety and performance
+
+- String interpolation lets us place data into strings efficiently
+    - `\(value)' syntax
+
+- Type Annotations
+    - Override Swift's type inference with explicit types: `let name: Type = value`
+    - Use when:
+        1. Type can't be inferred
+        2. Need specific type (e.g., `Double` over `Int`)
+        3. Delayed value assignment (`var name: String`)
+    - It's ok to use type inference instead, because:
+        - It makes code shorter and easier to read.
+        - It allows to change the type of something just by changing its initial value.
+
+## Primitive Types
+
+- `String`: Text data = `"Hello!"`, `"""Hi"""` (multiline)
+
+- `Int`: Whole numbers = `7`, `-123`, `1_000_000` (`_` ignored for readability)
+
+- `Double`: Decimal numbers = `3.6`, `-4.513`
+
+- `Boolean` (`true` / `false`) 
     - `!` operator means "not"
         ```swift
         var isItPossible = true
@@ -39,17 +55,15 @@
         amIRight.toggle() // true became false
         print(amIRight) // false
         ```
-- [x] String interpolation let's us place data into strings efficiently
-    - `let luggageCode = "\(1)\(2)\(3)\(4)\(5)"` = `12345`
-- [x] Checkpoint 1: Temperature conversion (Celsius to Fahrenheit)
 
-# ✅ Hacking with SwiftUI: Day 3
-- [x] Arrays
-    - **Ordered collections** with indexing starting from 0 (0, 1, 2, ...)
+## Collections
+
+- Arrays
+    - **Ordered, index-based collections**
     - Type-safe: All elements must be same type
-    - `Array<Int>()` — specialized array, `<>` means "must hold"
-    - `[String]` — faster way, instead of `Array<Int>()`
-    - Key operations:
+        - `Array<Int>()` — specialized array, `<>` means "must hold"
+        - `[String]` — faster way, instead of `Array<Int>()`
+    - Operations:
         - `append()` to add items
         - `count` for size
         - `remove(at:)`/`removeAll()`
@@ -58,19 +72,19 @@
     - Initialization:
         - Literal: `[value1, value2]`
         - Empty: `Array<Type>()` or `[Type]()`
-- [x] Dictionaries
-    // TODO: repeat
+
+- Dictionaries
     - **Key-value pairs** for unordered data
     - Avoids index errors (safer than arrays for labeled data)
-    - Default values for missing keys: `dict[key, default:]`
+    - Default values for missing keys: `dict[key, default: value]`
     - Keys must be unique (reassignment overwrites)
     - Initialization:
         - Literal: `[key: value, ...]`
         - Empty: `[KeyType: ValueType]()`
-- [x] Sets
+
+- Sets
     - **Unordered unique values**
-    - Optimized for fast membership checks (`contains()`)
-    - No duplicates
+    - Optimized for fast membership checks: `contains()`
     - Initialization:
         - Literal: `Set([...])`
         - Empty: `Set<Type>()`
@@ -79,35 +93,11 @@
         var actors = Set<String>()
         actors.insert("Nicolas Cage")
         ```
-- [x] Enums (enumeration)
-    - **Type-safe named options**
-    - Prevents invalid states
-    - Dot-syntax shorthand after initialization
-    ```swift
-    enum Weekday {
-    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
-    }
-    var day = Weekday.monday
-    day = .tuesday
-    ```
-    - Memory-optimized storage
 
-# ✅ Hacking with SwiftUI: Day 4
->Good data structures and bad code works a lot better than the other way around. (Eric Raymond)
-- [x] Type Annotations
-    - Override Swift's type inference with explicit types
-    - Syntax: `let name: Type = value`
-    - Use when:
-        1. Type cannot be inferred
-        2. Need specific type (e.g., `Double` over `Int`)
-        3. Delayed value assignment (`var name: String`)
-    - It's ok to use type inference instead, because:
-        - It makes code shorter and easier to read.
-        - It allows to change the type of something just by changing its initial value.
-- [x] Checkpoint 2
+## Control Flow
 
-# ✅ Hacking with SwiftUI: Day 5
-- [x] Conditions (`if` statements)
+- Conditionals 
+    - `if`/`else if`/`else`
     ```swift
     if condition {
         // Code to execute if true
@@ -121,7 +111,7 @@
         username = "Anonymous"
     }
     ```
-    - [x] Efficient Conditional Branching
+    - Efficient Conditional Branching
         - Chain mutually exclusive conditions using `else`/`else if`
     - Optimize with logical operators (`&&`, `||`)
     - **Implicit Bool**: Omit `== true` (use `hasConsent` instead of `hasConsent == true`)
@@ -131,7 +121,18 @@
             print("You can delete this post")
         }
         ```
-- [x] `switch` statements
+
+- Ternary Conditional Operator
+    - Compact single-line `if`/`else` alternative. Syntax: `condition ? trueValue : falseValue`
+        ```swift
+        let animal = "Elephant"
+        let size = animal == "Elephant" ? "Large" : "Compact" // "Large"
+        ```
+    - Keep on single line condition checks
+    - Use only when clearer than `if`/`else`
+    - Good for SwiftUI view modifiers
+
+- `switch` statements
     - Use when comparing **one value against multiple possibilities** (cleaner than long `if`/`else` chains):
         ```swift
         let grade = "B"
@@ -148,18 +149,8 @@
     - Clean syntax
     - No fallthrough — only one case executes
     - Combine cases — `case "rain", "snow":`
-- [x] Ternary Conditional Operator
-    - Compact single-line `if`/`else` alternative. Syntax: `condition ? trueValue : falseValue`
-        ```swift
-        let animal = "Elephant"
-        let size = animal == "Elephant" ? "Large" : "Compact" // "Large"
-        ```
-    - Keep on single line condition checks
-    - Use only when clearer than `if`/`else`
-    - Good for SwiftUI view modifiers
 
-# ✅ Hacking with SwiftUI: Day 6
-- [x] loops
+- loops
     - `for` loops: Execute code for fixed sequences
         ```swift
         for i in 1...3 {
@@ -218,7 +209,8 @@
             }
         }
         ```
-- [x] Checkpoint 3: FizzBuzz
+
+- [x] FizzBuzz task
     - Initial Approach:
         ```swift
         for i in 1...100 {
@@ -251,8 +243,10 @@
         - Clearer reading: `i.isMultiple(of: 15)` vs `i % 15 == 0`
         - Official Swift recommendation
     - Great milestone! Most developers struggle with this
-# ✅ Hacking with SwiftUI: Day 7
-- [x] Functions basics
+
+## Functions
+
+- Functions basics
     - **Declaration**:
         ```swift
         func greet(name: String) {
@@ -267,7 +261,8 @@
     - **Parameter count**:
         - Ideal: 0-3 parameters
         - Max: 6 parameters (use structs beyond this)
-- [x] Returning values
+
+- Returning values
     - **Single return**:
         ```swift
         func square(number: Int) -> Int {
@@ -280,7 +275,8 @@
             number * number
         }
         ```
-- [x] Multiple return values
+
+- Multiple return values
     - **Using tuples**:
         ```swift
         func getUser() -> (name: String, age: Int) {
@@ -296,7 +292,8 @@
         | Ordered duplicates   | Array | `[1,1,2]`               |
         | Unique unordered     | Set   | `Set([1,2,3])`          |
         | Fixed related values | Tuple | `(name: "Li", age: 40)` |
-- [x] Parameter labels
+
+- Parameter labels
     - **External customization**:
         ```swift
         func sayHello(to name: String) {  // External 'to', internal 'name'
@@ -312,147 +309,97 @@
         greet("Tim")
         ```
         - Use when: Parameter name is clear at call site
-# ✅ Stanford CS193p: Lecture 1
-- **Functional programming**: Focus on functionality and behavior, not data
-- **Code Hygiene**: Max 20 lines/view (aim for 12) → Extract subviews
-- Begin every view with minimal placeholder:
+
+## Enums & Optionals
+
+- Enums (enumeration)
+    - **Type-safe named options**
+    - Prevents invalid states
+    - Dot-syntax shorthand after initialization
     ```swift
-    struct MyView: View {
-        var body: some View {
-            Text("Hello")
-        }
+    enum Weekday {
+    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
     }
+    var day = Weekday.monday
+    day = .tuesday
     ```
-- **View Composition**
-  - `HStack` for horizontal layouts
-  - `ZStack` for layered views
-  - `CardView` as reusable component
-- **Modifier Chaining**
-  ```swift
-  .foregroundColor(.green)
-  .padding()
-  ```
+    - Memory-optimized storage
 
-## ⏳ Reading Assignment I: Intro to Swift
-- [ ]
+- Optionals
+    ```swift
+    let pseudoNumber = "123" // 123 is a String
+    let convertedNumber = Int(pseudoNumber) // 123 is an optional Int, not just an Int
 
+    let anotherValue = Int? // contains Int value or no value
+    ```
+    - nil
+        - `nil` = no value.
+        - optional variable w/o a value is automatically set to `nil`
 
+        ```stift
+        var champion: String? // champion = nil
+        ```
+    - **Unwrapping Techniques**:
+        - Optional Binding: `if let value = optional { }`
+            - Find out whether an optional contains a value, and if so, to make that value available as a temporary constant or variable.
+        - `guard let` for early exits
+        - Nil coalescing: `?? defaultvalue`
 
+# Memory Management & Types
 
+- Value types: `struct`) // TODO: add `enum`
+    - 99.9% of cases
+    - Functional programming
+    - Inheritance (single)
 
-# ✅ Stanford CS193p: Lecture 2
-> In this code you will never type tuple view. That's something that the ViewBuilder mechanism does behind the scenes for you.
+- Reference type: `class`
+    - Reference type
+    - OOP
+    - Use for ViewModels
 
-## Key Concepts
-- **State Management**: `@State` for view-specific mutable data (`cardCount`, `isFaceUp`)
-- **View Composition**: Break complex views into components (`CardView`, `cardCountAdjusters`)
-- **Dynamic Layouts**: `LazyVGrid` with adaptive columns for responsive grids
-- **Reactive UI**: Auto-updates on state change
+- Protocols
+    - "stripped down" struct/class
+    - Has functions and vars, but no implementation (no storage)
+    - used for
+        - specifying the behavior of a struct, class, or enum: `struct ContentView: View`
+        - "constrains and gains"
+        - turning "don't cares" to "somewhat cares": `struct Array<Element> where Element: Equatable`
 
-## Implementation Patterns
-- View extraction: Create reusable components with parameters
+- Generics (AKA don't care" type)
+    - Swift uses them extensively
+    - Type-agnostic code: `func swap<T>(_ a: inout T, _ b: inout T)`
+    
+
+# SwiftUI Essentials
+
+## View Composition
+
+- Containers
+    - `HStack`: Horizontal layout
+    - `VStack`: Vertical layout
+    - `ZStack`: Layered views
+
+- Reusable Components
     ```swift
     struct CardView: View {
         let content: String
-        @State var isFaceUp = true
-    }
-    ```
-- **Computed Views**: Organize UI sectors:
-    ```swift
-    var cards: some View { ... }
-    var cardCountAdjusters: some View { ... }
-    ```
-- **Parameterized View Builders**: Create flexible UI components:
-    ```swift
-    func cardCountAdjuster(by offset: Int, symbol: String) -> some View
-    ```
-- **Conditional Styling**: Use ternary operators for state-dependent styling:
-    ```swift
-    .opacity(isFaceUp ? 1 : 0)
-    .disabled(cardCount + offset < 1)
-    ```
-- **Efficient Iteration**: `ForEach` with index-based content:
-    ```swift
-    ForEach(0..<cardCount, id: \.self) { index in
-        CardView(content: emojis[index])
+        @State private var isFaceUp = false
     }
     ```
 
-## Programming Assignment 1
-- [x] 1: Type in all the code from lectures to get the Memorize game working.
-- [x] 2 (optional): rm `-` and `+` buttons. Skipped.
-- [x] 3: Add a title “Memorize!” to the top of the screen.
-- [x] 4: Add 3+ buttons to change emojis theme. // the hardest among others.
-- [x] 5: The face up or face down state of the cards does not need to change when the user changes the theme.
-- [x] 6: The number of pairs of cards in each of your 3 themes should be different, but in no case fewer than 4 pairs.
-- [x] 7: the cards should be shuffled each time a theme button is chosen.
-- [x] 8: The theme-choosing buttons must include an image representing the theme and text describing the theme stacked on top of each other vertically.  
-- [x] 9: The image portion of each of these theme-choosing buttons must be created using an SF Symbol which evokes the idea of the theme it chooses.
-- [x] 10: The text description of the theme-choosing buttons must use a noticeably smaller font than the font we chose for the emoji on the cards.
-- [x] 11: Change the code so that cards appear face down by default rather than face up.
-- [x] 12: Your UI should work in portrait or landscape on any iPhone and look good in light mode and dark mode.
-- [x] EXTRA 1: Associate a Color with each theme.
+- **Modifiers**
+    - Chainable: `.padding().background(.blue)`
+    - Conditional: `.opacity(isActive ? 1 : 0`
 
-# ✅ Stanford CS193p: Lecture 3 (MVVM)
-- MVVM design paradigm
-    - Model
-        - Swift rebuilds the UI when a Model change affect it
-        - UI Independent
-        - Data + Logic
-        - "The Truth"
-    - UI
-        - Reflects the Model
-        - Stateless
-        - Declared
-        - Reactive
-    - Model and UI
-        1. @State in a View (very minimal / no separation)
-        2. The Model might only be accessible via a gatekeeper "View Model" class (full separation) | ALWAYS USE 2. 
-        3. View Model class — a hybrid of the first two (partial separation) | as your app grows, it makes a mess.
-    - MVVM
-        - Binds View to Model
-        - Interpreter: binds View to Model
-        - Gatekeeper
-        - Processes Intents
-        - No inheritance
-- Swift Type System
-    - **struct** (99.9%)
-        - Value type
-        - Functional programming
-        - Inheritance (single)
-    - class (for ViewModel)
-        - Reference type
-        - OOP
-    - protocol (part one)
-        - Is a type
-        - "stripped down" struct/class
-        - Has functions and vars, but no implementation (no storage)
-        - used for
-            - specifying the behavior of a struct, class, or enum: `struct ContentView: View`
-            - "constrains and gains"
-            - turning "don't cares" to "somewhat cares": `struct Array<Element> where Element: Equatable` 
-    - **"don't care" type (aka generics)**
-        - Swift uses them extensively
-    - functions
-        - are types: you can declare a var:
-            - `(Int, Int) -> Bool`
-            - `(Double) -> Void`
-            - ...
-        - closures
-            - "inline functions"
-- [x] Apply MVVM to Memorize (partially)
+## State Management
 
-# Stanford CS193p: Lecture 4 (Applying MVVM)
-- `$0` — A special placeholder name for "the first argument" in Swift closures.
-- In Swift, property initialization is **undermined**; it doesn't follow the order declared in the source code.
-- Return types must always be **explicit**—they're the only thing Swift cannot infer. 
-- `@ObservedObject = something` — A major no-no (avoid direct assignment).
+- `@State`
+    - View-specific mutable data (`cardCount`, `isFaceUp`)
+    - Triggers UI updates on change
 
-## Reading Assignment II: Functional Programming
-- [ ] protocols
-- [ ] extensions
-- [ ] generics
-- [ ] closures
-- [ ] optionals
+ - `@ObservedObject`
+    - External reference types
+    - Never assign directly: `@ObservableObject var vm: ViewModel`
+
 
 
