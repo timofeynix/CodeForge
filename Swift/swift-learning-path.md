@@ -16,8 +16,8 @@
 ## Why Swift
 
 - High demand
-- **Safety**: hard to write unsafe code;
-- **Clarity**: easy to write clear and understandable code.
+- **Safety**: hard to write unsafe code
+- **Clarity**: easy to write clear and understandable code
 
 ## Basic Syntax
 
@@ -94,7 +94,7 @@
 
 ## Control Flow
 
-- **Conditionals**
+- **Conditional Statements**
     - `if`/`else if`/`else`
         ```swift
         if condition {
@@ -144,7 +144,7 @@
     - Clean syntax
     - No fallthrough — only one case executes
     - Combine cases: `case "rain", "snow":`
-- **Loops**
+- **For-In Loops**
     - `for` loops: Execute code for fixed sequences
         ```swift
         for i in 1...3 {
@@ -441,27 +441,25 @@
 - **Code Hygiene**: Max 20 lines/view (aim for 12) → Extract subviews
 
 # MVVM Architecture
-- **MVVM design paradigm**
+- **MVVM design paradigm** (Model-View-ViewModel)
     - Model
-        - Swift rebuilds the UI when a Model change affect it
-        - UI Independent
-        - Data + Logic
-        - "The Truth"
-    - View (UI)
-        - Reflects the Model
-        - Stateless
-        - Declared
-        - Reactive
+        - Swift rebuilds the UI when a Model change affect it (Data + Logic)
+        - UI Independent ("The Truth")
+        - Pure Swift (no UI concepts)
+    - View (SwiftUI)
+        - Declarative UI components
+        - Stateless presentation layer
+        - Reflects ViewModel state
+        - Reactive (auto-updates on state changes)
     - View Model
-        1. @State in a View (very minimal / no separation)
-        2. The Model might only be accessible via a gatekeeper "View Model" class (full separation) | ALWAYS USE 2. 
-        3. View Model class — a hybrid of the first two (partial separation) | as your app grows, it makes a mess.
-    - MVVM
-        - Binds View to Model
-        - Interpreter: binds View to Model
-        - Gatekeeper
-        - Processes Intents
-        - No inheritance
+        - Mediates between View and Model
+        - Gatekeeper for Model access
+        - Processes user intents (e.g., button taps)
+        - Formats Model data for View consumption
+        - **Implementation Approaches**:
+            1. `@State` in a View (minimal separation - best for simple view-specific state)
+            2. The Model accessible only via gatekeeper "View Model" class (full separation — ✅ Always Use)  
+            3. Hybrid (View Model class): partial separation (⚠️ becomes messy at scale)
 - [x] Apply MVVM to Memorize (partially)
 
 # Programming Assignment 1
