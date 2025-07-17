@@ -4,6 +4,29 @@
 - [100 Days of SwiftUI](https://www.hackingwithswift.com/100/swiftui)
 - [CS193p 2023 Stanford Course](https://cs193p.stanford.edu/2023) 
 
+## Reading Assignment I: 
+- [ ] [The Basics](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics)
+    - multiple declaration: `var x = 0.0, y = 0.0, z = 0.0`
+    - Type Annotations: `var welcomeMessage: String` // you rarely need to use it because of *Type Inference*
+    - [x] variables
+    - [x] constants
+    - [ ] optionals
+        - use where a value may be absent
+    - [ ] type safety
+    - [ ] tuples
+- [ ] [Basic Operators](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/basicoperators)
+    _(Covers arithmetic, comparison, logical operators, and ranges)_
+- [ ] [Strings and Characters](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/stringsandcharacters)
+    _(String manipulation, interpolation, and Unicode support)_
+- [ ] [Collection Types](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/collectiontypes)
+    _(Arrays, Sets, and Dictionaries)_
+- [ ] [Control Flow](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/controlflow)
+    _(`if`/`guard`, `switch`, `for`-`in`, `while`, and `break`/`continue`)_
+- [ ] [Functions](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions)
+    _(Defining/calling functions, parameters, return types, and argument labels)_
+- [ ] [Closures](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures)
+    _(Closure expressions, trailing syntax, and capturing values)_
+
 ## Reading Assignment II: Functional Programming
 - [ ] protocols
 - [ ] extensions
@@ -290,14 +313,12 @@
         print(user.name)    // Jane
         print(user.age)     // 19
         ```
-    - Collection choices:        
+    - Collection choices:
         | Use Case             | Type  | Example                 |
         | -------------------- | ----- | ----------------------- |
         | Ordered duplicates   | Array | `[1,1,2]`               |
         | Unique unordered     | Set   | `Set([1,2,3])`          |
         | Fixed related values | Tuple | `(name: "Li", age: 40)` |
-        
-        
 - **Parameter labels**
     - External customization:
         ```swift
