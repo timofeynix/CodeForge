@@ -261,7 +261,11 @@
     - Great milestone! Most developers struggle with this
 
 ## Functions
-
+- Reuse code by carving off chunks and giving it a name
+- Start with the word `func`, followed by the function's name
+- Can accept parameters to control their behaviour
+- Can optionally return a value, but you can return multiple pieces of data from a function using a `tuple`
+- Can throw errors
 - **Functions basics**
     - Declaration:
         ```swift
@@ -277,6 +281,11 @@
     - Parameter count:
         - Ideal: 0-3 parameters
         - Max: 6 parameters (use structs beyond this)
+    - Default Parameters:
+        - Set with `=` after type: `func greet(name: String = "Anonymous"`
+        - Use to replace multiple overloaded functions
+        - When to use: Common-case simplification (e.g. `print()` defaults)
+        - When to avoid: No logical default exists
 - **Function types**
     - Concept: Functions have specific types (like `Int`, `String`)
         - Can be assigned to variables/constants
@@ -334,11 +343,56 @@
         }
         greet("Tim")
         ```
-        - Use when: Parameter name is clear at call site
+        - Use when: Function name already describes first parameter (e.g., `green(name:)`)
+    - Default Parameter Integration Example:
+        ```swift
+        func enroll(name: String, department: String = "Engineering") {
+            print("\(name) enrolled in (\department)")
+        }
+        enroll(name: "Lisa")
+        ```
 - **Closures**
     - Inline functions: `{ param in ... }`
     - Shorthand: `{ $0 * 2 }`
-    - `$0` — A special placeholder name for "the first argument" in Swift closures.
+    - `$0` — A special placeholder name for "the first argument" in Swift closures
+- **Throwing Functions**
+    1. Define `enum` with all the errors you want to throw
+        ```swift
+        enum NetworkError: Error {
+            case timeout, serverDown
+        }
+        ```
+    2. Write a function that's marked throws for those errors
+        ```swift
+        func fetchData() throws -> Data {
+            if serverUnavailable { throw NetworkError.serverDown }
+            return Data(...)
+        }
+        ```
+    3. Call them with `try` inside `do` block`, handle specific errors in `catch`
+        ```swift
+        do {
+            let data = try fetchData()
+            process(data)
+        } catch NetworkError.timeout {
+            retryRequiest()
+        } catch {
+            print("Unhandled: \(error)")
+        }
+        ```
+    - When to throw: Network failures, file I/O errors, invalid input.
+    - Throwing functions must be marked with `throws`
+    - Swift won't let you run an error-throwing function by accident
+    - Able to encounter errors they are unable or unwilling to handle
+    - Avoid throwing functions most of the time as a beginner
+    - `do` to start a section of code that calls throwing functions
+    - `try`
+        - By using `try` before every throwing function, we're explicitly acknowledging which parts of our code can cause errors
+        - Useful with several throwing functions in a single `do` block 
+        - Most other languages don't need the `try`
+        - Prevents accidental ignoring of errors
+        - Mandatory for compiler to track error propagation
+    - `catch`: If any errors are thrown, execution immediately jumps to the catch block
 
 ## Enums & Optionals
 
@@ -348,19 +402,15 @@
     - Dot-syntax shorthand after initialization
         ```swift
         enum Weekday {
-        case monday, tuesday, wednesday, thursday, friday, saturday, sunday
+            case monday, tuesday, wednesday, thursday, friday, saturday, sunday
         }
         var day = Weekday.monday
         day = .tuesday
         ```
     - Memory-optimized storage
 - **Optionals**
-    ```swift
-    let pseudoNumber = "123" // 123 is a String
-    let convertedNumber = Int(pseudoNumber) // 123 is an optional Int, not just an Int
-
-    let anotherValue = Int? // contains Int value or no value
-    ```
+    - TODO
+    - Type Signature: `Type?` is shorthand for `Optional<Type>`
     - nil
         - `nil` = no value.
         - optional variable w/o a value is automatically set to `nil`:
@@ -368,10 +418,43 @@
             var champion: String? // champion = nil
             ```
     - Unwrapping Techniques:
-        - Optional Binding: `if let value = optional { }`
+        - Optional Binding (`if let`)
+            - Safe local unwrapping, ex. `if let value = optional { }`
             - Find out whether an optional contains a value, and if so, to make that value available as a temporary constant or variable.
-        - `guard let` for early exits
-        - Nil coalescing: `?? defaultvalue`
+        - `guard let`: Early-exit unwrapping
+            - Allows to avoid `if let` "pyramid of doom"
+            ```swift
+            func check(age: Int?) {
+                guard let age else {
+                    print ("Age is nil")
+                    return
+                }
+                if age > 40 {
+                    print("You're old")
+                }
+            }
+            ```
+        - Nil Coalescing (`??`): Fallback value
+            - Great to providing easy default value
+            ```swift
+            let age = user.age ?? 0
+            let name = user.name ?? "Not given"
+            ```
+        - `?` Optional Chaining
+            - Wnen entire object is optional
+            ```swift
+            var optionalUser: User?
+            let name = optionalUser?.name ?? "Not Given"
+            
+            if let newNAme = optionalUser?.name {
+                print(newName)
+            }
+            ```
+        - Forced Unwrapping (`!`)
+            - When value must exist (crash overwise)
+            - Never ever use it if you're a beginner
+            - `let age = user.age!`
+         
 
 # Memory Management & Types
 
