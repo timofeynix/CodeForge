@@ -162,7 +162,7 @@
             default: print("Try again")  // Mandatory catch-all; required unless all cases covered
         }
         ```
-    - Exhaustive checks — must handle all cases (safe)
+    - Exhaustive checks — must handle all possible cases (safe)
     - Pattern matching — works with ranges, enums, tuples
     - Clean syntax
     - No fallthrough — only one case executes
@@ -352,7 +352,45 @@
         enroll(name: "Lisa")
         ```
 - **Closures**
+    - *Probably the most complex feature in Swift, but Closures are used extensively in Swift and they're used everywhere in SwiftUI*
+    - We can create closures as anonimous functions and to stash them away in constants and variables (running some code after a delay / an animation has finished, ...)
+    - We can pass functions into other functions as a parameter freely if it's allowed to
+    - **Function assignment**:
+        ```swift
+        func greetUser() { print("Hi there!") }
+        var greetCopy = greetUser  // No parentheses
+        greetCopy()
+        ```
+        - Type annotation: `var greetCopy: () -> Void = greetUser`
+    - **Parameter name behavior**:
+        - External names lost when copying functions or using closures
+        ```swift
+        func getUserData(for id: Int) -> String { ... }
+        let data: (Int) -> String = getUserData
+        data(1989)  // Not data(for: 1989)
+        ```
     - Inline functions: `{ param in ... }`
+        ```swift
+        // function
+        func pay(user: String, amount: Int) {
+            // code
+        }
+        
+        // closure
+        let payment = { (user: String, amount: Int) in 
+            // code
+        }
+        ```
+        - Parameters inside the braces
+        - `in` marks the end of parameters and return type and the start of the body of the closure
+        - Closures cannot use external parameter labels
+    - Use `()` for parameter list to return a value from a closure that takes no parameters (just like `func payment() -> Bool` in standart function):
+        ```swift
+        let payment = { () -> Bool in // 
+            print("Paying and anonymous person...")
+            return true
+        }
+        ```
     - Shorthand: `{ $0 * 2 }`
     - `$0` — A special placeholder name for "the first argument" in Swift closures
 - **Throwing Functions**
