@@ -299,6 +299,7 @@
         print(comparer(9, 3))  // true
         ```
 - **Returning values**
+    - If there is only one line of code, can skip writing `return`
     - Single return:
         ```swift
         func square(number: Int) -> Int {
@@ -393,6 +394,87 @@
         ```
     - Shorthand: `{ $0 * 2 }`
     - `$0` — A special placeholder name for "the first argument" in Swift closures
+    - **Trailing Closure Syntax**:
+        - When closure is last parameter: move outside parentheses
+            ```swift
+            // Standard
+            animate(duration: 3, animations: {
+                print("Fade out")
+            })
+            
+            // Trailing
+            animate(duration: 3) {
+                print("Fade out")
+            }
+            ```
+    - **Type Inference in Closures**:
+        - Omit parameter types and return type when inferred
+            ```swift
+            // Original
+            team.sorted(by: { (name1: String, name2: String) -> Bool in ... })
+            
+            // Simplified
+            team.sorted(by: { name1, name2 in ... })
+            ```
+    - **Advanced Shorthand**:
+        - Use `$0`, `$1` directly without `in`
+            ```swift
+            let reverseTeam = team.sorted { $0 > $1 }
+            ```
+    - **Functional Methods**:
+        - `filter`: `let tOnly = team.filter { $0.hasPrefix("T") }`
+        - `map`: `let uppercaseTeam = team.map { $0.uppercased() }`
+    - **Shorthand Guidelines**:
+        - Avoid when:
+            - Closure code is long
+            - `$0`/`$1` used multiple times
+            - 3+ parameters (`$2`, `$3`)
+    - **Accepting Functions as Parameters**:
+        ```swift
+        // Declaring function parameters
+        func makeArray(size: Int, using generator: () -> Int) -> [Int] {
+            var numbers = [Int]()
+            for _ in 0..<size {
+                numbers.append(generator())  // Call passed function
+            }
+            return numbers
+        }
+        
+        // Usage with closure
+        let rolls = makeArray(size: 50) {
+            Int.random(in: 1...20)
+        }
+        
+        // Usage with named function
+        func generateNumber() -> Int { Int.random(in: 1...20) }
+        let newRolls = makeArray(size: 50, using: generateNumber)
+        ```
+    - **Multiple Trailing Closures**:
+        ```swift
+        func doWork(first: ()->Void, second: ()->Void, third: ()->Void) {
+            first()
+            second()
+            third()
+        }
+        
+        doWork {
+            print("First")
+        } second: {
+            print("Second")
+        } third: {
+            print("Third")
+        }
+        ```
+    - **Real-World Use Cases**:
+        - Asynchronous operations (avoid UI freezing):
+            ```swift
+            // Network request pattern
+            fetchData { result in
+                // Update UI when completed
+            }
+            ```
+        - Event handlers (button taps, animations)
+        - Custom sorting/filtering logic
 - **Throwing Functions**
     1. Define `enum` with all the errors you want to throw
         ```swift
@@ -493,7 +575,6 @@
             - Never ever use it if you're a beginner
             - `let age = user.age!`
          
-
 # Memory Management & Types
 
 - **Value types: `struct`** // TODO: add `enum`
