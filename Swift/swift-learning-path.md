@@ -424,10 +424,9 @@
     - **Functional Methods**:
         - `filter`: `let tOnly = team.filter { $0.hasPrefix("T") }`
         - `map`: `let uppercaseTeam = team.map { $0.uppercased() }`
-    - **Shorthand Guidelines**:
-        - Avoid when:
-            - Closure code is long
-            - `$0`/`$1` used multiple times
+    - **Shorthand Guidelines**: Avoid `$0`/`$1` when:
+            - Closure > 3 lines
+            - Used repeatedly
             - 3+ parameters (`$2`, `$3`)
     - **Accepting Functions as Parameters**:
         ```swift
@@ -576,24 +575,28 @@
             - `let age = user.age!`
          
 # Memory Management & Types
+## Structures (`struct`)
+// TODO: improve structures knowledges pt. 1
+// TODO: improve structures knowledges pt. 2
+- **Value type**: Copied when assigned/passed (safe, predictable behavior)
+- **SwiftUI Foundation**: All Views are structs (lightweight, disposable UI components)
+- Functional programming
+- Inheritance (single)
+- Note: Property initialization is **undermined**; doesn't follow declared order
 
-- **Value types: `struct`** // TODO: add `enum`
-    - 99.9% of cases
-    - Functional programming
-    - Inheritance (single)
-    - Note: Property initialization is **undermined**; doesn't follow declared order
-- **Reference type: `class`**
-    - Reference type
-    - OOP
-    - Use for ViewModels
-- **Protocols**
+## Classes (`class`)
+- Reference Semantics: Shared instances (changes affect all references)
+- OOP
+- Use for ViewModels
+
+## Protocols
     - "stripped down" struct/class
     - Has functions and vars, but no implementation (no storage)
     - used for
         - specifying the behavior of a struct, class, or enum: `struct ContentView: View`
         - "constrains and gains"
         - turning "don't cares" to "somewhat cares": `struct Array<Element> where Element: Equatable`
-- **Generics (AKA don't care" type)**
+## Generics ("Don't care" Type)
     - Swift uses them extensively
     - Type-agnostic code: `func swap<T>(_ a: inout T, _ b: inout T)`
 
@@ -699,3 +702,4 @@
 - [x] 11: Change the code so that cards appear face down by default rather than face up.
 - [x] 12: Your UI should work in portrait or landscape on any iPhone and look good in light mode and dark mode.
 - [x] EXTRA 1: Associate a Color with each theme.
+
