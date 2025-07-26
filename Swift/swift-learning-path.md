@@ -584,6 +584,32 @@
 - Inheritance (single)
 - Note: Property initialization is **undermined**; doesn't follow declared order
 
+- Structs let us create own custom complex data types
+- Tuples to return 2+ pieces of value from a func, but structs for fixed data to send / receive multiple times.
+ 
+- Methods belong to a type (structs, enums, classes), functions do not. Swift uses the `func` to define a method. Methods can refer to the other properties and methods inside the type they were accodiated.
+- Methods also avoid namespace pollution.
+ 
+- Inside your struct there’s no way of telling whether you’ll be working with a variable struct or a constant struct. So, to change properties, mark it as `mutating`.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Classes (`class`)
 - Reference Semantics: Shared instances (changes affect all references)
 - OOP
